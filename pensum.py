@@ -94,8 +94,17 @@ def refreshBooks(username, password):
         f.writelines(s)
         f.close()
 
-if(user == '' or passw == ''):
-    sys.exit('You need to configure the script')
 
-#Call the def
-refreshBooks(user, passw)
+if __name__ == '__main__':
+    if(len(sys.argv) != 1 and len(sys.argv) != 3):
+        sys.exit('Usage: pensum.py [username password]');
+
+    #Get user and password from commandline if provided
+    if(len(sys.argv) == 3):
+        user = sys.argv[1]
+        passw = sys.argv[2]
+
+    if(user == '' or passw == ''):
+        sys.exit('You need to configure the script')
+    #Call the def
+    refreshBooks(user, passw)
